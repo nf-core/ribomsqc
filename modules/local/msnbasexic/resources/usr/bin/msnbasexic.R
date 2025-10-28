@@ -111,9 +111,9 @@ compute_xic <- function(ms_data, mz1, rt_target, rt_tol_sec, mz_tol, msLevel, pp
               return(list(NULL))
             }
 
-            # Build XIC by averaging intensities per spectrum within the m/z window          
+            # Build XIC by averaging intensities per spectrum within the m/z window
             sp_list <- spectra(ms1_data)
-            rt_vals <- rtime(ms1_data)  
+            rt_vals <- rtime(ms1_data)
 
             if (DEBUG_SPECTRUM_DETAILS) {
               message(glue("  Preloaded {length(sp_list)} MS1 spectra into memory"))
@@ -770,4 +770,3 @@ lines <- unlist(lapply(names(version_info), function(k) paste0(k, ": ", version_
 writeLines(lines, "versions.yml")
 
 print("versions.yml generated.")
-
