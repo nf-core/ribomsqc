@@ -17,9 +17,15 @@
 
 [![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23ribomsqc-4A154B?labelColor=000000&logo=slack)](https://nfcore.slack.com/channels/ribomsqc)[![Follow on Twitter](http://img.shields.io/badge/twitter-%40nf__core-1DA1F2?labelColor=000000&logo=twitter)](https://twitter.com/nf_core)[![Follow on Mastodon](http://img.shields.io/badge/mastodon-nf__core-6364ff?labelColor=FFFFFF&logo=mastodon)](https://mstdn.science/@nf_core)[![Watch on YouTube](http://img.shields.io/badge/youtube-nf--core-FF0000?labelColor=000000&logo=youtube)](https://www.youtube.com/c/nf-core)
 
-## Introduction
+### Introduction
 
-**nf-core/ribomsqc** is a bioinformatics pipeline that processes `RAW` files from mass spectrometry instruments, converts them to `mzML` format, extracts `XIC`s for selected analytes, generates plots, and summarizes outputs via MultiQC. It is tailored for quality control of ribonucleoside analysis.
+Use **nf-core/ribomsqc** to:
+
+- Perform automated quality control of ribonucleoside analysis by mass spectrometry.
+- Summarize and visualize QC metrics through integrated **MultiQC** reports.
+
+![ribomsqc workflow](docs/images/ribomsqc_general_workflow.png)
+![ribomsqc workflow](docs/images/ribomsqc_workflow_horizontal.png)
 
 ## Usage
 
