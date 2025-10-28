@@ -1,6 +1,6 @@
 process MERGEJSONS {
     label 'process_single'
-    tag "$meta"
+    tag "merge_jsons"
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
