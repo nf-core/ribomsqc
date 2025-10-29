@@ -1,8 +1,8 @@
-name: mergejsons_env
+name: mergejsons
 channels:
   - conda-forge
   - bioconda
 dependencies:
-  - r-base=4.3
   - r-jsonlite
-  - r-tools
+  - r-glue
+  - r-base
