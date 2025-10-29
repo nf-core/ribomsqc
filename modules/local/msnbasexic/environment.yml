@@ -1,12 +1,12 @@
-name: msnbase_env
+name: msnbasexic
 channels:
   - conda-forge
   - bioconda
 dependencies:
-  - r-base=4.3
   - bioconductor-msnbase
+  - r-ggplot2
   - r-optparse
   - r-pracma
-  - r-ggplot2
   - r-readr
-  - r-tools
+  - r-jsonlite
+  - r-glue
