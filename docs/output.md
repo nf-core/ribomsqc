@@ -23,7 +23,6 @@ The pipeline is implemented with [Nextflow](https://www.nextflow.io/) and execut
 <summary>Output files</summary>
 
 - `thermorawfileparser/`
-
   - `*.mzML`: `.raw` file convert to format suitable for downstream processing.
 
 </details>
@@ -69,7 +68,6 @@ Each of these **merged** JSON files consolidates multiple per-sample (or per-fil
 <summary>Output files</summary>
 
 - `multiqc/`
-
   - `multiqc_report.html`: Interactive HTML report aggregating XIC-derived tables and merged JSON metrics.
   - `multiqc_data/`: Directory containing raw data inputs for MultiQC, including the merged QC JSON files.
 
@@ -83,7 +81,6 @@ Each of these **merged** JSON files consolidates multiple per-sample (or per-fil
 <summary>Output files</summary>
 
 - `pipeline_info/`
-
   - Nextflow execution artifacts: `execution_report.html`, `execution_timeline.html`, `execution_trace.txt`, `pipeline_dag.dot`/`pipeline_dag.svg`
   - Pipeline software versions: `nf_core_ribomsqc_software_versions.yml`
   - Run parameters: `params.json` (only if `-saveParams true` is set)

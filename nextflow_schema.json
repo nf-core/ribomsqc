@@ -155,6 +155,18 @@
                     "fa_icon": "far calendar",
                     "description": "Suffix to add to the trace report filename. Default is the date and time in the format yyyy-MM-dd_HH-mm-ss.",
                     "hidden": true
+                },
+                "help": {
+                    "type": ["boolean", "string"],
+                    "description": "Display the help message."
+                },
+                "help_full": {
+                    "type": "boolean",
+                    "description": "Display the full detailed help message."
+                },
+                "show_hidden": {
+                    "type": "boolean",
+                    "description": "Display hidden parameters in the help message (only works when --help or --help_full are provided)."
                 }
             }
         },
@@ -207,6 +219,12 @@
                 "overwrite_tsv": {
                     "type": "boolean",
                     "description": "Whether to generate an additional TSV file accumulating the XIC extraction results. If set to `true`, the output will include a progressively updated results table based on the original input analytes TSV."
+                },
+                "test_mode": {
+                    "type": "boolean",
+                    "description": "Enable test mode - pipeline continues even if analytes are not found in the data. Useful for CI testing with minimal datasets.",
+                    "default": false,
+                    "hidden": true
                 }
             },
             "required": ["analytes_tsv", "analyte", "rt_tolerance", "mz_tolerance", "ms_level"]
