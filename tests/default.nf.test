@@ -10,6 +10,9 @@ nextflow_pipeline {
             params {
                 outdir = "$outputDir"
                 analyte = "C"
+                input = "https://raw.githubusercontent.com/nf-core/test-datasets/ribomsqc/pipelines/ribomsqc/testdata/samplesheet.csv"
+                analytes_tsv = "https://raw.githubusercontent.com/nf-core/test-datasets/ribomsqc/pipelines/ribomsqc/testdata/analytes.tsv"
+                test_mode = true
             }
         }
 
