@@ -111,8 +111,8 @@ workflow RIBOMSQC {
             ).set { ch_collated_versions }
 
     emit:
-        versions       = ch_versions
-        spectra        = THERMORAWFILEPARSER.out.spectra
-        xic_output     = MSNBASEXIC.out.xic_output
-        multiqc_report = MULTIQC.out.report
+    versions       = ch_versions
+    spectra        = THERMORAWFILEPARSER.out.spectra
+    xic_output     = MSNBASEXIC.out.xic_output
+    multiqc_report = MULTIQC.out.report
 }
