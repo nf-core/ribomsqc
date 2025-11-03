@@ -20,7 +20,7 @@ include { MERGEJSONS              } from '../modules/local/mergejsons/main'
 workflow RIBOMSQC {
 
     take:
-        input_ch
+    input_ch
 
     main:
         ch_versions = Channel.empty()
