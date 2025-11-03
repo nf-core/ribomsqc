@@ -13,7 +13,7 @@ process MERGEJSONS {
         path(json_files, stageAs: "merge_jsons_input/*")
 
     output:
-        path("*_merged_mqc.json"), emit: merged_jsons
+    path("*_merged_mqc.json"), emit: merged_jsons
 
 
     when:
