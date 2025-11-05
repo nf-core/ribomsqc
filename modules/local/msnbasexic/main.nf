@@ -19,17 +19,11 @@ process MSNBASEXIC {
         task.ext.when == null || task.ext.when
 
     script:
+    def args = task.ext.args ?: ''
     """
     msnbasexic.R \\
       --file_name ${mzml_file} \\
       --tsv_name ${tsv_file} \\
-      --analyte_name ${params.analyte} \\
-      --rt_tol_sec ${params.rt_tolerance} \\
-      --mz_tol_ppm ${params.mz_tolerance} \\
-      --msLevel ${params.ms_level} \\
-      --plot_xic_ms1 ${params.plot_xic_ms1} \\
-      --plot_xic_ms2 ${params.plot_xic_ms2} \\
-      --plot_output_path ${params.plot_output_path} \\
-      --overwrite_tsv ${params.overwrite_tsv}
+      ${args}
     """
 }
