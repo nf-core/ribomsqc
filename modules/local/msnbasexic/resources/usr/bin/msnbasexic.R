@@ -27,7 +27,7 @@ json_yaxis_window <- list(
 PPP_THRESHOLD_RATIO <- 0.05
 
 DEBUG_SPECTRUM_DETAILS <- FALSE # Set to TRUE to see detailed spectrum processing messages
-DEBUG_JSON_PROCESSING <- TRUE # Add this line - it's missing!
+DEBUG_JSON_PROCESSING <- FALSE # Set to TRUE/FALSE to enable/disable detailed JSON processing messages
 
 # Define command-line options
 option_list <- list(
