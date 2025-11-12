@@ -27,7 +27,10 @@ Use **nf-core/ribomsqc** to:
 - Summarize and visualize QC metrics through integrated **MultiQC** reports.
 
 ![ribomsqc workflow](docs/images/ribomsqc_general_workflow.png)
+**Figure 1:** General workflow overview showing the pipeline steps from RAW file input through ThermoRawFileParser conversion, MSNBase XIC extraction, JSON merging, to final MultiQC report generation.
+
 ![ribomsqc workflow](docs/images/ribomsqc_workflow_horizontal.png)
+**Figure 2:** Detailed workflow diagram illustrating the data flow and process connections in the ribomsqc pipeline.
 
 ## Usage
 
