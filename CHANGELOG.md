@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Changed`
 
+- [#27](https://github.com/proteomicsunitcrg/ribomsqc/pull/27) - Bump MultiQC from 1.28 to 1.33
 - [#27](https://github.com/proteomicsunitcrg/ribomsqc/pull/27) - Improved logging clarity and enhanced plot aesthetics
 - [#27](https://github.com/proteomicsunitcrg/ribomsqc/pull/27) - Corrected MS2 peak extraction logic with accurate precursor matching
 - [#27](https://github.com/proteomicsunitcrg/ribomsqc/pull/27) - Refined internal logic of the XIC extraction algorithm
@@ -36,4 +37,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | -------------------------- | ------- |
 | `ThermoRawFileParser`      | 1.4.5   |
 | `bioconductor-msnbase (R)` | 2.32.0  |
-| `MultiQC`                  | 1.28    |
+| `MultiQC`                  | 1.33    |
