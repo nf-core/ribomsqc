@@ -1,8 +1,6 @@
-// This test is disabled because:
-// 1. MSNBASEXIC requires significant computational resources for R/Bioconductor processing
-// 2. The full pipeline test in tests/main.nf.test provides better integration testing
-// 3. Individual module testing is planned after establishing test data infrastructure
-// To enable: rename this file to main.nf.test
+// Test disabled: requires significant computational resources.
+// Full pipeline test in tests/main.nf.test provides integration coverage.
+// To enable: rename to main.nf.test
 
 nextflow_process {
   name "Test Process MSNBASEXIC"
