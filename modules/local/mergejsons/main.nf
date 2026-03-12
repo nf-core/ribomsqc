@@ -10,14 +10,14 @@ process MERGEJSONS {
     'community.wave.seqera.io/library/bioconductor-msnbase_r-ggplot2_r-optparse_r-pracma_r-readr:83cd263d3bfd0c9e' }"
 
     input:
-        path(json_files, stageAs: "merge_jsons_input/*")
+    path(json_files, stageAs: "merge_jsons_input/*")
 
     output:
-        path("*_merged_mqc.json"), emit: merged_jsons
+    path("*_merged_mqc.json"), emit: merged_jsons
 
 
     when:
-        task.ext.when == null || task.ext.when
+    task.ext.when == null || task.ext.when
 
     script:
     def args = task.ext.args ?: ''
