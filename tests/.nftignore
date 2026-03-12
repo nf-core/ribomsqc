@@ -11,3 +11,6 @@ pipeline_info/*.{html,json,txt,yml}
 BSA_QC_test.mzML
 **/BSA_QC_test.mzML
 *.mzML
+
+# MultiQC Parquet files have non-deterministic metadata
+**/multiqc.parquet
