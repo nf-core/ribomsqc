@@ -1,5 +1,8 @@
 #!/usr/bin/env Rscript
 
+# Logging: cat() writes to stdout which Nextflow captures in .command.log
+# All cat() statements below will appear in task logs
+
 # Load required libraries
 suppressPackageStartupMessages(library(optparse))
 suppressPackageStartupMessages(library(MSnbase))

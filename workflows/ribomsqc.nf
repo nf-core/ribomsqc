@@ -1,7 +1,7 @@
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 include { paramsSummaryMap        } from 'plugin/nf-schema'
 include { softwareVersionsToYAML  } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -12,9 +12,9 @@ include { MULTIQC                 } from '../modules/nf-core/multiqc/main'
 include { MERGEJSONS              } from '../modules/local/mergejsons/main'
 
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     RUN MAIN WORKFLOW
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
 workflow RIBOMSQC {
@@ -41,20 +41,9 @@ workflow RIBOMSQC {
         MODULE: Run MSNBASEXIC
         --------------------------------------------------------------------------------
         */
-        mzml_ch             = THERMORAWFILEPARSER.out.spectra
-        analytes_tsv_ch     = Channel.value(file(params.analytes_tsv, checkIfExists: true))
-        analyte_ch          = Channel.value(params.analyte)
-        rt_tol_ch           = Channel.value(params.rt_tolerance)
-        mz_tol_ch           = Channel.value(params.mz_tolerance)
-        ms_level_ch         = Channel.value(params.ms_level)
-        plot_xic_ms1_ch     = Channel.value(params.plot_xic_ms1)
-        plot_xic_ms2_ch     = Channel.value(params.plot_xic_ms2)
-        plot_output_path_ch = Channel.value(params.plot_output_path)
-        overwrite_tsv_ch    = Channel.value(params.overwrite_tsv)
-
         MSNBASEXIC(
-            mzml_ch,
-            analytes_tsv_ch
+            THERMORAWFILEPARSER.out.spectra,
+            Channel.value(file(params.analytes_tsv, checkIfExists: true))
         )
 
         ch_versions = ch_versions.mix(MSNBASEXIC.out.versions)
@@ -72,15 +61,7 @@ workflow RIBOMSQC {
         MODULE: Merge MQC JSONs
         --------------------------------------------------------------------------------
         */
-        def outdir_path = file("${workflow.launchDir}/${params.outdir}")
-
-        ch_mqc_jsons_previous = (outdir_path.exists()) ?
-            Channel.fromPath("${outdir_path}/**/*_mqc.json") :
-            Channel.empty()
-
         ch_merge_input = ch_mqc_jsons_current
-            .mix(ch_mqc_jsons_previous)
-            .distinct()
             .collect()
 
         MERGEJSONS(ch_merge_input)
