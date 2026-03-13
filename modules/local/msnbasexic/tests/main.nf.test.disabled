@@ -1,0 +1,34 @@
+// Test disabled: requires significant computational resources.
+// Full pipeline test in tests/main.nf.test provides integration coverage.
+// To enable: rename to main.nf.test
+
+nextflow_process {
+  name "Test Process MSNBASEXIC"
+  script "../main.nf"
+  process "MSNBASEXIC"
+
+  tag "local"
+  tag "msnbasexic"
+
+  test("basic test") {
+    config "./nextflow.config"
+
+    when {
+      process {
+        """
+        input[0] = [
+          [ id: 'test' ],
+          file('https://raw.githubusercontent.com/nf-core/test-datasets/ribomsqc/pipelines/ribomsqc/testdata/BSA_QC_test.raw')
+        ]
+        input[1] = file('https://raw.githubusercontent.com/nf-core/test-datasets/ribomsqc/pipelines/ribomsqc/testdata/analytes.tsv')
+        """
+      }
+    }
+
+    then {
+      assert process.success
+      assert process.out.xic_output
+      assert process.out.versions
+    }
+  }
+}

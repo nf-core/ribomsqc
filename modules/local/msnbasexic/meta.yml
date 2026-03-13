@@ -41,23 +41,23 @@ input:
 
 output:
   - tsv:
-    - meta:
-        type: map
-        description: |
-          Groovy Map containing sample information
-          e.g. `[ id:'sample1' ]`
-    - "*.tsv":
-        type: file
-        description: Output TSV file with extracted XIC information
-        pattern: "*.tsv"
-        ontologies:
-          - edam: "http://edamontology.org/format_3475"
+      - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.tsv":
+          type: file
+          description: Output TSV file with extracted XIC information
+          pattern: "*.tsv"
+          ontologies:
+            - edam: "http://edamontology.org/format_3475"
 
   - versions:
-    - "versions.yml":
-        type: file
-        description: File containing software versions
-        pattern: "versions.yml"
+      - "versions.yml":
+          type: file
+          description: File containing software versions
+          pattern: "versions.yml"
 
 authors:
   - "@rolivella"

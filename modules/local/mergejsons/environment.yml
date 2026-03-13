@@ -1,0 +1,8 @@
+name: mergejsons
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base=4.3.1
+  - r-jsonlite=1.8.7
+  - r-glue=1.6.2

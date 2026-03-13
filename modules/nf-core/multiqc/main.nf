@@ -1,10 +1,11 @@
 process MULTIQC {
     label 'process_single'
+    tag 'multiqc'
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/multiqc:1.27--pyhdfd78af_0' :
-        'biocontainers/multiqc:1.27--pyhdfd78af_0' }"
+        'https://depot.galaxyproject.org/singularity/multiqc:1.31--pyhdfd78af_0' :
+        'biocontainers/multiqc:1.31--pyhdfd78af_0' }"
 
     input:
     path  multiqc_files, stageAs: "?/*"
@@ -32,9 +33,6 @@ process MULTIQC {
     def replace = replace_names ? "--replace-names ${replace_names}" : ''
     def samples = sample_names ? "--sample-names ${sample_names}" : ''
     """
-echo '🚀 MULTIQC s’està executant amb fitxers:'
-ls -lh ${multiqc_files}
-
     multiqc \\
         --force \\
         $args \\

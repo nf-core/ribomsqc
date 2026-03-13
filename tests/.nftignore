@@ -1,0 +1,16 @@
+.DS_Store
+pipeline_info/*.{html,json,txt,yml}
+
+# MultiQC variable files
+**/multiqc_data/multiqc.log
+**/multiqc_data.json
+**/multiqc_report.html
+
+# ThermoRawFileParser variable outputs
+**/thermorawfileparser/
+BSA_QC_test.mzML
+**/BSA_QC_test.mzML
+*.mzML
+
+# MultiQC Parquet files have non-deterministic metadata
+**/multiqc.parquet

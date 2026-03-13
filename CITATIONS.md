@@ -16,13 +16,13 @@
 
 - [MSnbase - Bioconductor package](https://bioconductor.org/packages/release/bioc/html/MSnbase.html)
 
-  > Gatto L, Lilley K (2012). “MSnbase - an R/Bioconductor package for isobaric tagged mass spectrometry data visualization, processing and quantitation.” *Bioinformatics*, 28, 288–289.
+  > Gatto L, Lilley K (2012). “MSnbase - an R/Bioconductor package for isobaric tagged mass spectrometry data visualization, processing and quantitation.” _Bioinformatics_, 28, 288–289.
 
-  > Gatto L, Gibb S, Rainer J (2020). “MSnbase, efficient and elegant R-based processing and visualisation of raw mass spectrometry data.” *bioRxiv*.
+  > Gatto L, Gibb S, Rainer J (2020). “MSnbase, efficient and elegant R-based processing and visualisation of raw mass spectrometry data.” _bioRxiv_.
 
 - [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
 
-  > Ewels, P., Magnusson, M., Lundin, S., & Käller, M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. *Bioinformatics*, 32(19), 3047–3048. doi: [10.1093/bioinformatics/btw354](https://doi.org/10.1093/bioinformatics/btw354). PubMed PMID: [27312411](https://pubmed.ncbi.nlm.nih.gov/27312411/)
+  > Ewels, P., Magnusson, M., Lundin, S., & Käller, M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. _Bioinformatics_, 32(19), 3047–3048. doi: [10.1093/bioinformatics/btw354](https://doi.org/10.1093/bioinformatics/btw354). PubMed PMID: [27312411](https://pubmed.ncbi.nlm.nih.gov/27312411/)
 
 ## Software packaging/containerisation tools
 
