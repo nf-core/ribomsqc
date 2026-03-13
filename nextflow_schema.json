@@ -19,14 +19,14 @@
                     "schema": "assets/schema_input.json",
                     "mimetype": "text/csv",
                     "pattern": "^\\S+\\.csv$",
-                    "description": "Path to comma-separated file containing information about the samples in the experiment.",
+                    "description": "Path to a comma-separated file (CSV) listing samples to process. Must contain a header with two columns: 'id' (sample identifier) and 'raw_file' (full path to the corresponding RAW file). You may specify one or multiple samples for batch processing.",
                     "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row. See [usage docs](https://nf-co.re/ribomsqc/usage#samplesheet-input).",
                     "fa_icon": "fas fa-file-csv"
                 },
                 "outdir": {
                     "type": "string",
                     "format": "directory-path",
-                    "description": "The output directory where the results will be saved. You have to use absolute paths to storage on Cloud infrastructure.",
+                    "description": "Directory where the pipeline will write its output. If a relative folder name is used (e.g., 'results'), it will be created in the current working directory. If an absolute path is given (e.g., '/path/to/output'), the folder will be created at that specific location.",
                     "fa_icon": "fas fa-folder-open"
                 },
                 "email": {
@@ -34,7 +34,8 @@
                     "description": "Email address for completion summary.",
                     "fa_icon": "fas fa-envelope",
                     "help_text": "Set this parameter to your e-mail address to get a summary e-mail with details of the run sent to you when the workflow exits. If set in your user config file (`~/.nextflow/config`) then you don't need to specify this on the command line for every run.",
-                    "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$"
+                    "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
+                    "hidden": true
                 }
             }
         },
@@ -168,6 +169,65 @@
                     "description": "Display hidden parameters in the help message (only works when --help or --help_full are provided)."
                 }
             }
+        },
+        "xic_parameters": {
+            "title": "XIC extraction and plotting",
+            "type": "object",
+            "description": "Parameters used for chromatographic peak extraction and visualisation",
+            "fa_icon": "fas fa-chart-line",
+            "properties": {
+                "analytes_tsv": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Path to a tab-separated values (TSV) file describing the analytes for chromatographic peak extraction. Must include columns: `short_name`, `long_name`, `mz_M0` (required), and optionally `mz_M1`, `mz_M2`, `ms2_mz`, and `rt_teoretical` (required). Only `mz_M0` and `rt_teoretical` are mandatory. `mz_M1` and `mz_M2` are reserved for future support of isotopic envelope integration.",
+                    "mimetype": "text/tab-separated-values",
+                    "pattern": "^\\S+\\.tsv$",
+                    "fa_icon": "fas fa-file"
+                },
+                "analyte": {
+                    "type": "string",
+                    "description": "Short name of the analyte to be extracted, as defined in the 'short_name' column of the TSV file. Use a specific value such as 'm3C' to process one analyte, or use 'all' to process all analytes defined in the TSV file."
+                },
+                "rt_tolerance": {
+                    "type": "integer",
+                    "description": "Time window (in seconds) around the theoretical retention time in which peaks will be searched. The window is defined as RT \u00b1 tolerance.",
+                    "default": 150
+                },
+                "mz_tolerance": {
+                    "type": "integer",
+                    "description": "Tolerance in parts-per-million (ppm) around the specified precursor m/z value (mz_M0) for XIC extraction. The window is defined as mz_M0 \u00b1 tolerance.",
+                    "default": 20
+                },
+                "ms_level": {
+                    "type": "integer",
+                    "description": "MS level to extract chromatographic peaks from. Set to 1 for MS1 or 2 for MS2.",
+                    "default": 2
+                },
+                "plot_xic_ms1": {
+                    "type": "boolean",
+                    "description": "Whether to plot MS1 XICs"
+                },
+                "plot_xic_ms2": {
+                    "type": "boolean",
+                    "description": "Whether to plot MS2 XICs"
+                },
+                "plot_output_path": {
+                    "type": "string",
+                    "description": "Output file name for the XIC PDF plot",
+                    "default": "xic_plot.pdf"
+                },
+                "overwrite_tsv": {
+                    "type": "boolean",
+                    "description": "Whether to generate an additional TSV file accumulating the XIC extraction results. If set to `true`, the output will include a progressively updated results table based on the original input analytes TSV."
+                },
+                "test_mode": {
+                    "type": "boolean",
+                    "description": "Enable test mode - pipeline continues even if analytes are not found in the data. Useful for CI testing with minimal datasets.",
+                    "default": false,
+                    "hidden": true
+                }
+            },
+            "required": ["analytes_tsv", "analyte", "rt_tolerance", "mz_tolerance", "ms_level"]
         }
     },
     "allOf": [
@@ -179,6 +239,9 @@
         },
         {
             "$ref": "#/$defs/generic_options"
+        },
+        {
+            "$ref": "#/$defs/xic_parameters"
         }
     ]
 }

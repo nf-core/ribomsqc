@@ -28,17 +28,15 @@ include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_ribo
 // WORKFLOW: Run main analysis pipeline depending on type of input
 //
 workflow NFCORE_RIBOMSQC {
-
     take:
-    samplesheet // channel: samplesheet read in from --input
+    input_ch // channel: input data read in from --input
 
     main:
-
     //
     // WORKFLOW: Run pipeline
     //
-    RIBOMSQC (
-        samplesheet
+    RIBOMSQC(
+        input_ch
     )
 }
 /*
@@ -69,7 +67,7 @@ workflow {
     // WORKFLOW: Run main workflow
     //
     NFCORE_RIBOMSQC (
-        PIPELINE_INITIALISATION.out.samplesheet
+       PIPELINE_INITIALISATION.out.samplesheet
     )
     //
     // SUBWORKFLOW: Run completion tasks

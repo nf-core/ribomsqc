@@ -1,0 +1,65 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "msnbasexic"
+description: |
+  Wrapper module to run an R script that extracts chromatographic ion traces (XIC) from mzML files using the MSnbase Bioconductor package.
+keywords:
+  - proteomics
+  - mass spectrometry
+  - xic
+  - msnbase
+
+tools:
+  - "msnbasexic":
+      description: |
+        Custom R script using the Bioconductor MSnbase package to extract and visualize chromatographic peaks from mzML files.
+      homepage: https://bioconductor.org/packages/MSnbase
+      documentation: https://bioconductor.org/packages/release/bioc/html/MSnbase.html
+      tool_dev_url: https://github.com/lgatto/MSnbase
+      doi: 10.1093/bioinformatics/btt584
+      licence: Artistic-2.0
+      identifier: bioc.msnbase
+
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+
+    - mzml_file:
+        type: file
+        description: Mass spectrometry mzML input file
+        pattern: "*.mzML"
+        ontologies:
+          - edam: "http://edamontology.org/format_3247"
+
+    - tsv_file:
+        type: file
+        description: TSV file containing analyte/compound information
+        pattern: "*.tsv"
+
+output:
+  - tsv:
+      - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.tsv":
+          type: file
+          description: Output TSV file with extracted XIC information
+          pattern: "*.tsv"
+          ontologies:
+            - edam: "http://edamontology.org/format_3475"
+
+  - versions:
+      - "versions.yml":
+          type: file
+          description: File containing software versions
+          pattern: "versions.yml"
+
+authors:
+  - "@rolivella"
+maintainers:
+  - "@rolivella"
