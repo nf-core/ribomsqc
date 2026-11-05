@@ -120,7 +120,7 @@
                 "@id": "https://nf-co.re/"
             },
             "url": ["https://github.com/nf-core/ribomsqc", "https://nf-co.re/ribomsqc/dev/"],
-            "version": ["1.1.0dev"]
+            "version": ["1.1.0"]
         },
         {
             "@id": "https://w3id.org/workflowhub/workflow-ro-crate#nextflow",
