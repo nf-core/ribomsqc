@@ -3,6 +3,35 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.1.0 - 2026-11-05
+
+### `Added`
+
+- #46 - Manifest contributors metadata
+
+### `Changed`
+
+- #45 - Template updates for nf-core/tools 4.0.0, 4.0.2, 4.0.3, 4.1.0 and 4.2.1
+- #45 - Bump minimum Nextflow version to >= 25.10.4
+- #45 - Remove Slack notification feature with the template 4.x sync
+- #46 - manifest.defaultBranch set to dev
+- #46 - Drop duplicate nextflow.enable.moduleBinaries declaration inside params
+- #46 - Remove dead MSNBASEXIC ext.args block from nextflow.config
+- #46 - Deduplicate .nf-core.yml ignore entries
+- #46 - docs/usage.md: remove duplicated header and params line
+
+### `Fixed`
+
+- #42 - Remove vulnerable PR-comment artifact pattern
+- #44 - Switch fix-linting to the hardened nf-core/actions reusable workflow
+- #45 - Fix nf-test versions snapshot (real versions file content, stable assertions)
+- #46 - README Zenodo badge DOI updated to 10.5281/zenodo.18998042
+- #46 - CHANGELOG dead links to the archived proteomicsunitcrg/ribomsqc repo replaced by plain #27 refs
+
+### `Dependencies`
+
+- #46 - Align MSNBASEXIC conda environment with the production image: r-base 4.4.3, bioconductor-msnbase 2.32.0, r-ggplot2 3.5.1, r-pracma 2.4.4
+
 ## v1.0.0 - 2026-03-11
 
 ### `Added`
