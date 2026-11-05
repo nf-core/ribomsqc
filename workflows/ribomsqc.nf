@@ -65,7 +65,7 @@ workflow RIBOMSQC {
         */
         MSNBASEXIC(
             THERMORAWFILEPARSER.out.spectra,
-            Channel.value(file(params.analytes_tsv, checkIfExists: true))
+            channel.value(file(params.analytes_tsv, checkIfExists: true))
         )
 
         ch_versions = ch_versions.mix(MSNBASEXIC.out.versions)
@@ -105,7 +105,7 @@ workflow RIBOMSQC {
         Collate and Save Software Versions
         --------------------------------------------------------------------------------
         */
-        def ch_collated_versions = softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
+        softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
             .mix(topic_versions_string)
             .collectFile(
                 storeDir: "${outdir}/pipeline_info",
