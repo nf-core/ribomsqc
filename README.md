@@ -5,13 +5,13 @@
   </picture>
 </h1>
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new/nf-core/ribomsqc)
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/nf-core/ribomsqc)
 [![GitHub Actions CI Status](https://github.com/nf-core/ribomsqc/actions/workflows/nf-test.yml/badge.svg)](https://github.com/nf-core/ribomsqc/actions/workflows/nf-test.yml)
 [![GitHub Actions Linting Status](https://github.com/nf-core/ribomsqc/actions/workflows/linting.yml/badge.svg)](https://github.com/nf-core/ribomsqc/actions/workflows/linting.yml)[![AWS CI](https://img.shields.io/badge/CI%20tests-full%20size-FF9900?labelColor=000000&logo=Amazon%20AWS)](https://nf-co.re/ribomsqc/results)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.18998042-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.18998042)
 [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
 
-[![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.04.0-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
-[![nf-core template version](https://img.shields.io/badge/nf--core_template-3.4.1-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/3.4.1)
+[![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.10.4-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
+[![nf-core template version](https://img.shields.io/badge/nf--core_template-4.2.1-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/4.2.1)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
@@ -63,6 +63,9 @@ m7G	7-Methylguanosine 25 μg/mL	298.1146			166.0723	554
 ```
 
 > [!NOTE]
+> If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/get_started/environment_setup/overview) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/get_started/run-your-first-pipeline) with `-profile test` before running the workflow on actual data.
+
+> [!NOTE]
 > Replace **only** the values in the `rt_teoretical` column with **your own** retention times (in seconds) for each compound.
 
 3. **Run the pipeline**:
@@ -80,7 +83,7 @@ m7G	7-Methylguanosine 25 μg/mL	298.1146			166.0723	554
    ```
 
 > [!WARNING]
-> Please provide pipeline parameters via the CLI or Nextflow `-params-file` option.
+> Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see [docs](https://nf-co.re/docs/running/run-pipelines#using-parameter-files).
 
 For more information, see the [usage docs](https://nf-co.re/ribomsqc/usage) and [parameters](https://nf-co.re/ribomsqc/parameters).
 
@@ -94,7 +97,9 @@ nf-core/ribomsqc was originally written by Roger Olivella.
 
 ## Contributions and Support
 
-For help, visit [Slack #ribomsqc](https://nfcore.slack.com/channels/ribomsqc) or see [contributing guide](.github/CONTRIBUTING.md).
+If you would like to contribute to this pipeline, please see the [contributing guidelines](docs/CONTRIBUTING.md).
+
+For further information or help, don't hesitate to get in touch on the [Slack `#ribomsqc` channel](https://nfcore.slack.com/channels/ribomsqc) (you can join with [this invite](https://nf-co.re/join/slack)).
 
 ## Citations
 
