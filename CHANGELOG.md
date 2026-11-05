@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### `Dependencies`
 
 - #46 - Align MSNBASEXIC conda environment with the production image: r-base 4.4.3, bioconductor-msnbase 2.32.0, r-ggplot2 3.5.1, r-pracma 2.4.4
+- #49 - Fix MSNBASEXIC conda environment for R 4.4.3: r-optparse 1.7.5, r-readr 2.1.5, r-jsonlite 1.9.1, r-glue 1.8.0 (previous pins had no R 4.4 builds and were unresolvable)
 
 ## v1.0.0 - 2026-03-11
 
