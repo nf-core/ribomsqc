@@ -6,8 +6,8 @@ dependencies:
   - bioconductor-msnbase=2.32.0
   - r-base=4.4.3
   - r-ggplot2=3.5.1
-  - r-optparse=1.7.3
+  - r-optparse=1.7.5
   - r-pracma=2.4.4
-  - r-readr=2.1.4
-  - r-jsonlite=1.8.7
-  - r-glue=1.6.2
+  - r-readr=2.1.5
+  - r-jsonlite=1.9.1
+  - r-glue=1.8.0
