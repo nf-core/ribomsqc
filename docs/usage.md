@@ -58,8 +58,6 @@ This file must follow a strict format and include the following columns in this 
 
 ### Column Descriptions
 
-### Column Descriptions
-
 | Column            | Description                                                                 |
 | ----------------- | --------------------------------------------------------------------------- |
 | `short_name`      | Unique short identifier for the compound (used internally by the pipeline). |
@@ -118,7 +116,6 @@ rt_tolerance: 150
 mz_tolerance: 20
 ms_level: 2
 plot_xic_ms1: false
-plot_xic_ms2: false
 plot_xic_ms2: false
 plot_output_path: xic_plot
 overwrite_tsv: true
