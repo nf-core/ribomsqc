@@ -14,8 +14,9 @@ lint:
     - assets/sendmail_template.txt
     - .github/workflows/branch.yml
     - .github/workflows/linting.yml
+    - .gitignore
   multiqc_config: false
-nf_core_version: 3.5.1
+nf_core_version: 4.2.1
 repository_type: pipeline
 template:
   author: Roger Olivella

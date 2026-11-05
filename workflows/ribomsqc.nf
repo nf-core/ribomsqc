@@ -1,7 +1,7 @@
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 include { paramsSummaryMap        } from 'plugin/nf-schema'
 include { softwareVersionsToYAML  } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -12,18 +12,40 @@ include { MULTIQC                 } from '../modules/nf-core/multiqc/main'
 include { MERGEJSONS              } from '../modules/local/mergejsons/main'
 
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     RUN MAIN WORKFLOW
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
 workflow RIBOMSQC {
 
     take:
     input_ch
+    outdir
 
     main:
-        ch_versions = Channel.empty()
+
+        def ch_versions = channel.empty()
+
+        //
+        // Collate and save software versions
+        //
+        def topic_versions = channel.topic("versions")
+            .distinct()
+            .branch { entry ->
+                versions_file: entry instanceof Path
+                versions_tuple: true
+            }
+
+        def topic_versions_string = topic_versions.versions_tuple
+            .map { process, tool, version ->
+                [ process[process.lastIndexOf(':')+1..-1], "  ${tool}: ${version}" ]
+            }
+            .groupTuple(by:0)
+            .map { process, tool_versions ->
+                tool_versions.unique().sort()
+                "${process}:\n${tool_versions.join('\n')}"
+            }
 
         /*
         --------------------------------------------------------------------------------
@@ -43,7 +65,7 @@ workflow RIBOMSQC {
         */
         MSNBASEXIC(
             THERMORAWFILEPARSER.out.spectra,
-            Channel.value(file(params.analytes_tsv, checkIfExists: true))
+            channel.value(file(params.analytes_tsv, checkIfExists: true))
         )
 
         ch_versions = ch_versions.mix(MSNBASEXIC.out.versions)
@@ -83,10 +105,11 @@ workflow RIBOMSQC {
         Collate and Save Software Versions
         --------------------------------------------------------------------------------
         */
-        softwareVersionsToYAML(ch_versions)
+        softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
+            .mix(topic_versions_string)
             .collectFile(
-                storeDir : "${params.outdir}/pipeline_info",
-                name     : 'nf_core_' + 'ribomsqc_software_' + 'versions.yml',
+                storeDir: "${outdir}/pipeline_info",
+                name     : 'nf_core_' + 'ribomsqc_software_' + 'mqc_' + 'versions.yml',
                 sort     : true,
                 newLine  : true
             )
@@ -97,3 +120,9 @@ workflow RIBOMSQC {
     xic_output     = MSNBASEXIC.out.xic_output
     multiqc_report = MULTIQC.out.report
 }
+
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    THE END
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/

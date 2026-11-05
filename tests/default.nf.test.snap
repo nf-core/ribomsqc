@@ -1,7 +1,18 @@
 {
     "-profile test": {
         "content": [
-            null,
+            {
+                "MSNBASEXIC": {
+                    "MSnbase_version": "2.32.0",
+                    "R_version": "4.4.3",
+                    "ggplot2_version": "3.5.1",
+                    "msnbasexic_script": "msnbasexic.R",
+                    "pracma_version": "2.4.4"
+                },
+                "THERMORAWFILEPARSER": {
+                    "thermorawfileparser": "1.4.5"
+                }
+            },
             [
                 "mergejsons",
                 "mergejsons/dummy_mqc_merged_mqc.json",
@@ -18,7 +29,7 @@
                 "multiqc/multiqc_data/multiqc_sources.txt",
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
-                "pipeline_info/nf_core_ribomsqc_software_versions.yml",
+                "pipeline_info/nf_core_ribomsqc_software_mqc_versions.yml",
                 "thermorawfileparser",
                 "thermorawfileparser/BSA_QC_test.mzML"
             ],
