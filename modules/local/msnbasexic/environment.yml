@@ -3,11 +3,11 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - bioconductor-msnbase=2.26.0
-  - r-base=4.3.1
-  - r-ggplot2=3.4.3
+  - bioconductor-msnbase=2.32.0
+  - r-base=4.4.3
+  - r-ggplot2=3.5.1
   - r-optparse=1.7.3
-  - r-pracma=2.4.2
+  - r-pracma=2.4.4
   - r-readr=2.1.4
   - r-jsonlite=1.8.7
   - r-glue=1.6.2
