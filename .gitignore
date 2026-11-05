@@ -8,5 +8,9 @@ testing*
 *.pyc
 null/
 .lineage/
-.nf-test/
-.nf-test.log
+.nf-test*
+.RData
+.Rhistory
+
+# Test results
+test_results_*/

@@ -1,0 +1,7 @@
+- name: msnbasexic test
+  command: nextflow run ./modules/local/msnbasexic/tests/main.nf.test
+  tags:
+    - msnbasexic
+  files:
+    - path: results/test.tsv
+    - path: versions.yml
