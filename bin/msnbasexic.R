@@ -22,7 +22,7 @@ json_titles <- list(
 )
 # Optional Y axis window for metrics in the MultiQC JSON
 json_yaxis_window <- list(
-          dmz_ppm = c(-3, 3)
+          dmz_ppm = c(-5, 5)
           # ,Log2_Total_Area = c(5, 30)
 )
 
