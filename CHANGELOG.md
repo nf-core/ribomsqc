@@ -3,12 +3,6 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-### `Changed`
-
-- #50 - Widen dmz_ppm MultiQC plot y-axis window from +/-3 to +/-5 ppm
-
 ## v1.1.0 - 2026-11-05
 
 ### `Added`
@@ -25,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - #46 - Remove dead MSNBASEXIC ext.args block from nextflow.config
 - #46 - Deduplicate .nf-core.yml ignore entries
 - #46 - docs/usage.md: remove duplicated header and params line
+- #50 - Widen dmz_ppm MultiQC plot y-axis window from +/-3 to +/-5 ppm
 
 ### `Fixed`
 
