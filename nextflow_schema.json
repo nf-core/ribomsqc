@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/nf-core/ribomsqc/master/nextflow_schema.json",
+    "$id": "https://raw.githubusercontent.com/nf-core/ribomsqc/dev/nextflow_schema.json",
     "title": "nf-core/ribomsqc pipeline parameters",
     "description": "QC pipeline that monitors mass spectrometer performance in ribonucleoside analysis",
     "type": "object",
