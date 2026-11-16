@@ -6,8 +6,6 @@ lint:
   files_unchanged:
     - .github/CONTRIBUTING.md
     - assets/sendmail_template.txt
-    - .github/workflows/branch.yml
-    - .github/workflows/linting.yml
     - .gitignore
   multiqc_config: false
 nf_core_version: 4.2.2
