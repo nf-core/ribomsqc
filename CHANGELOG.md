@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - #46 - docs/usage.md: remove duplicated header and params line
 - #50 - Widen dmz_ppm MultiQC plot y-axis window from +/-3 to +/-5 ppm
 - #52 - Sync template to nf-core/tools 4.2.2 (setup-apptainer action v3 in CI)
+- #53 - Add 'Adding a new instrument' sub-page under docs/usage/
 
 ### `Fixed`
 
