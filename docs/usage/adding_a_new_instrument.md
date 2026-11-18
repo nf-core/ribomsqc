@@ -6,12 +6,16 @@ The pipeline is instrument-agnostic: it processes any Thermo Fisher RAW file
 given a samplesheet and an analytes TSV, so onboarding a new instrument
 requires **no changes to the pipeline code**.
 
-The maintainers operate the pipeline on multiple instruments (Orbitrap
-Eclipse, Exploris 240) with an external operations layer: a cron monitor
-watches each instrument's acquisition directory, submits SLURM jobs, and
+How you monitor raw-data arrival, submit jobs, and publish results is
+entirely up to your site. The rest of this page documents **one concrete
+setup used by the current maintainers** at their institution, as a
+reference example: a cron-based monitor watches each instrument's
+acquisition directory, submits jobs to a job scheduler (SLURM), and
 publishes a rolling MultiQC dashboard per instrument. Adding a new
 instrument means creating a parallel instrument configuration in that
-operations layer.
+operations layer; the checklist below follows that setup and can be
+adapted to your own (different scheduler, directory layout, or
+publishing target).
 
 ## Checklist
 
