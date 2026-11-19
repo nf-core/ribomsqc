@@ -179,4 +179,5 @@ If you update images or graphics, follow the nf-core [style guidelines](https://
 
 ## Pipeline specific contribution guidelines
 
-<!-- TODO nf-core: Add any pipeline specific contribution guidelines here, such as coding styles, procedures, checklists etc. -->
+- Adding a new instrument (QC application + analytes TSV): follow the [Adding a new instrument](usage/adding_a_new_instrument.md) guide.
+- The `MSNBASEXIC` process runs its own conda env (`modules/local/msnbasexic/environment.yml`); keep it aligned with the deployed prod image and refresh the Wave container pin after env changes.

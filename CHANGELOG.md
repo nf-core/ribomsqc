@@ -24,6 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#54](https://github.com/nf-core/ribomsqc/pull/54) - Drop stale files_unchanged entries (branch.yml, linting.yml) from .nf-core.yml
 - [#55](https://github.com/nf-core/ribomsqc/pull/55) - docs/usage/adding_a_new_instrument.md: clarify that the operations layer described is one institution's reference example
 - [#55](https://github.com/nf-core/ribomsqc/pull/55) - Remove TODO nf-core metro map comment from nextflow.config
+- [#56](https://github.com/nf-core/ribomsqc/pull/56) - Pass collated software versions to MultiQC (template alignment, report gains the Software Versions section)
+- [#56](https://github.com/nf-core/ribomsqc/pull/56) - docs/CONTRIBUTING.md: fill pipeline specific contribution guidelines section
 
 ### `Fixed`
 
@@ -34,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#46](https://github.com/nf-core/ribomsqc/pull/46), [#55](https://github.com/nf-core/ribomsqc/pull/55) - CHANGELOG PR references in the v1.0.0 section relinked to the current repo (dead archived-repo links removed)
 - [#55](https://github.com/nf-core/ribomsqc/pull/55) - README nf-core template badge bumped to 4.2.2 (consistent with .nf-core.yml)
 - [#55](https://github.com/nf-core/ribomsqc/pull/55) - manifest: doi set to 1.0.0 Zenodo DOI (10.5281/zenodo.18998042)
+- [#56](https://github.com/nf-core/ribomsqc/pull/56) - docs/output.md: software versions filename aligned with the pipeline_info output
 
 ### `Dependencies`
 
