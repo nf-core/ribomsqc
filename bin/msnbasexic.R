@@ -22,7 +22,7 @@ json_titles <- list(
 )
 # Optional Y axis window for metrics in the MultiQC JSON
 json_yaxis_window <- list(
-          dmz_ppm = c(-3, 3)
+          dmz_ppm = c(-5, 5)
           # ,Log2_Total_Area = c(5, 30)
 )
 
@@ -787,16 +787,19 @@ if (length(list.files(pattern = "*_mqc.json")) == 0) {
 }
 
 
-# Save version information
+# Save version information (nested under the process name: the nf-test snapshot
+# helper nft-utils::removeFromYamlMap expects a top-level map of section -> map)
 version_info <- list(
           msnbasexic_script = "msnbasexic.R",
-          generated_at = as.character(Sys.time()),
           R_version = paste(R.version$major, R.version$minor, sep = "."),
           MSnbase_version = as.character(packageVersion("MSnbase")),
           ggplot2_version = as.character(packageVersion("ggplot2")),
           pracma_version = as.character(packageVersion("pracma"))
 )
-lines <- unlist(lapply(names(version_info), function(k) paste0(k, ": ", version_info[[k]])))
+lines <- c(
+          '"MSNBASEXIC":',
+          unlist(lapply(names(version_info), function(k) paste0("    ", k, ": ", version_info[[k]])))
+)
 writeLines(lines, "versions.yml")
 
 print("versions.yml generated.")

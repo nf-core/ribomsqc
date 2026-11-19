@@ -82,7 +82,7 @@ Each of these **merged** JSON files consolidates multiple per-sample (or per-fil
 
 - `pipeline_info/`
   - Nextflow execution artifacts: `execution_report.html`, `execution_timeline.html`, `execution_trace.txt`, `pipeline_dag.dot`/`pipeline_dag.svg`
-  - Pipeline software versions: `nf_core_ribomsqc_software_versions.yml`
+  - Pipeline software versions: `nf_core_ribomsqc_software_mqc_versions.yml`
   - Run parameters: `params.json` (only if `-saveParams true` is set)
 
 </details>
