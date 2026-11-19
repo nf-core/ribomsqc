@@ -5,6 +5,8 @@ pipeline_info/*.{html,json,txt,yml}
 **/multiqc_data/multiqc.log
 **/multiqc_data.json
 **/multiqc_report.html
+# Software versions text contains the run commit sha, unstable across runs
+multiqc/multiqc_data/multiqc_software_versions.txt
 
 # ThermoRawFileParser variable outputs
 **/thermorawfileparser/

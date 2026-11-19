@@ -95,17 +95,10 @@ workflow RIBOMSQC {
 
         /*
         --------------------------------------------------------------------------------
-        MODULE: Run MULTIQC
-        --------------------------------------------------------------------------------
-        */
-        MULTIQC([], [], [], [], ch_multiqc_files, [])
-
-        /*
-        --------------------------------------------------------------------------------
         Collate and Save Software Versions
         --------------------------------------------------------------------------------
         */
-        softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
+        def ch_collated_versions = softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
             .mix(topic_versions_string)
             .collectFile(
                 storeDir: "${outdir}/pipeline_info",
@@ -113,6 +106,15 @@ workflow RIBOMSQC {
                 sort     : true,
                 newLine  : true
             )
+
+        ch_multiqc_files = ch_multiqc_files.mix(ch_collated_versions).flatten().collect()
+
+        /*
+        --------------------------------------------------------------------------------
+        MODULE: Run MULTIQC
+        --------------------------------------------------------------------------------
+        */
+        MULTIQC([], [], [], [], ch_multiqc_files, [])
 
     emit:
     versions       = ch_versions
