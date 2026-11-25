@@ -35,8 +35,9 @@ workflow NFCORE_RIBOMSQC {
     //
     // WORKFLOW: Run pipeline
     //
-    RIBOMSQC(
-        input_ch
+    RIBOMSQC (
+        input_ch,
+        params.outdir,
     )
 }
 /*
@@ -78,7 +79,6 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        params.hook_url,
     )
 }
 

@@ -58,8 +58,6 @@ This file must follow a strict format and include the following columns in this 
 
 ### Column Descriptions
 
-### Column Descriptions
-
 | Column            | Description                                                                 |
 | ----------------- | --------------------------------------------------------------------------- |
 | `short_name`      | Unique short identifier for the compound (used internally by the pipeline). |
@@ -85,6 +83,15 @@ The `--outdir` parameter specifies where the pipeline output files will be store
 :::tip
 Use absolute paths in scripts or production workflows to ensure consistent and predictable file placement, especially when running from different directories or via automation.
 :::
+
+## Adding a new instrument
+
+The pipeline is instrument-agnostic: the same code processes any Thermo
+Fisher RAW file given the right samplesheet and analytes TSV. The maintainers
+operate it on several instruments via an external operations layer (cron
+monitoring, SLURM submission, per-instrument rolling dashboards). See
+[Adding a new instrument](https://nf-co.re/ribomsqc/usage/adding_a_new_instrument)
+for the onboarding checklist.
 
 ## Running the pipeline
 
@@ -118,7 +125,6 @@ rt_tolerance: 150
 mz_tolerance: 20
 ms_level: 2
 plot_xic_ms1: false
-plot_xic_ms2: false
 plot_xic_ms2: false
 plot_output_path: xic_plot
 overwrite_tsv: true
